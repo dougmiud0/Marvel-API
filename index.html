@@ -1,0 +1,167 @@
+<!Doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Marvel</title>
+  </head>
+  <body>
+    
+      <header class="bg-danger text-center py-2">
+        <h1 class="text-light">MARVEL API</h1>
+      </header>      
+      <div class="container-fluid"></div>
+        <div class="d-flex justify-content-around pt-5" >
+        <!--Black Panther -->
+        <div class="card p" style="width: 18rem;">
+          <img class="card-img-top img-thumbnail" src="images/blackpanther.png" alt="Card image cap" >
+          <div class="card-body">
+            <h5 class="card-title"> Black Panther </h5>
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBlackPanther">
+              <span>Histórias</span>
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="modalBlackPanther" tabindex="-1" role="dialog" aria-labelledby="modalBlackPantherTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalBlackPantherLongTitle">Black Panther</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div id="modal-body-panther" class="modal-body">
+      
+                  </div>
+                </div>
+              </div>
+            </div>        
+          </div>
+        </div>
+      
+        <!-- Iron Man -->
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top img-thumbnail" src="images/ironman.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"> Iron Man </h5>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalIronMan">
+              <span>Histórias</span>
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="modalIronMan" tabindex="-1" role="dialog" aria-labelledby="modalIronManTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalIronManLongTitle">Iron Man</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div id="modal-body-iron" class="modal-body">
+                    
+                    
+                  </div>  
+                </div>
+              </div>
+            </div>        
+          </div>
+        </div>
+      </div>
+    
+    <footer class="footer fixed-bottom text-center bg-danger pt-3">
+        <p class="text-light">Marvel since 1939, Nova York, USA.</p>       
+    </footer>
+  </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/md5.min.js"></script>
+<script src="js/heroApp.js"></script>
+<script>
+
+//ID Black Panther 
+const codigo = 1009187;
+
+//Chama a hash para a função
+const hash = createHash(timeStamp);
+
+//Monta a url com as chaves que a API pede, especificando o heroi e limitando 2 histórias por chamada.
+const urlAPI = "https://gateway.marvel.com:443/v1/public/characters/"+codigo+"/stories?&ts="+timeStamp+"&apikey="+publicKey+"&hash="+hash;
+
+console.log(urlAPI);
+// Verifica se o status está ok e chama a função história de getDados.js
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var dados = JSON.parse(this.responseText);
+       console.log(dados)
+
+       shtml=`<h1></h1>
+        <p>As the king of the African nation of Wakanda, T’Challa protects his people as the latest in a legacy line of Black Panther warriors.</p>
+        <h2>Histórias</h2>
+        <ul>
+            <li>${dados.data.results[0].comics.items[0].name}</li>
+            <li>${dados.data.results[1].comics.items[0].name}</li>
+        </ul>          
+        `
+       
+       document.getElementById("modal-body-panther").innerHTML = shtml;
+       
+    }
+};
+xhttp.open("GET", urlAPI, true);
+xhttp.send();
+
+//Chama API via url específica para o Thanos, verifica se está correta e chama a história
+
+
+//ID Iron Man
+const codigoIron = 1009368;
+
+
+//Monta a url com as chaves que a API pede, especificando o heroi e limitando 2 histórias por chamada.
+const urlAPIiron = "https://gateway.marvel.com:443/v1/public/characters/"+codigoIron+"/stories?&limit=2&ts="+timeStamp+"&apikey="+publicKey+"&hash="+hash;
+
+console.log(urlAPIiron);
+// Verifica se o status está ok e chama a função história de getDados.js
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var dados = JSON.parse(this.responseText);
+        console.log(dados)
+        
+        shtml=`<h1></h1>
+        <p>Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger.<br><br>
+        </p>
+        <h2>Histórias</h2>
+        <ul>
+            <li>${dados.data.results[0].comics.items[0].name}</li>
+            <li>${dados.data.results[0].comics.items[1].name}</li>
+        </ul>          
+        `
+       
+       document.getElementById("modal-body-iron").innerHTML = shtml;
+    }
+};
+xhttp.open("GET", urlAPIiron, true);
+xhttp.send();
+
+
+
+</script>
+  </body>
+</body>
+</html>
