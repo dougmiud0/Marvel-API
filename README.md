@@ -12,7 +12,7 @@ Esse projeto tem como objetivo a criação de uma página web simples, em que se
  
 <h3>● Métodos Utilizados: </h3>
 
-GET -"https://gateway.marvel.com:443/v1/public/characters/"+codigo+"/stories?&ts="+timeStamp+"&apikey="+publicKey+"&hash="+hash;. Para ver mais informações sobre os métodos existentes, a documentação se encontra na seção de links.
+GET - https://gateway.marvel.com:443/v1/public/characters/"+codigo+"/stories?&ts="+timeStamp+"&apikey="+publicKey+"&hash="+hash;. Para ver mais informações sobre os métodos existentes, a documentação se encontra na seção de links.
 
 <h3>● Deploy e Publicação</h3>
 
