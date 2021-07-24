@@ -1,6 +1,6 @@
 # Marvel-API
 
-h3>● Descrição do Projeto</h3>
+<h3>● Descrição do Projeto</h3>
 
 Esse projeto tem como objetivo a criação de uma página web simples, em que se busca personagens da Marvel. Para consulta dos personagens foi utilizado a API pública do Marvel API (mais informações na seção links). Foram utilizados as seguintes tecnologias:
 
