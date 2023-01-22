@@ -28,7 +28,7 @@ Visto que não possuí nenhuma biblioteca adicional, não é necessário nenhuma
 
 <ul>● Douglas Dias - douglas.eng89@gmail.com
 
-● https://www.linkedin.com/in/douglas-dias-da-silva-88b927122/</ul>
+● https://www.linkedin.com/in/dougdsilva/</ul>
 
 <h3>● Licença</h3>
 Não se aplica.
